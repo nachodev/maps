@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+    <style>
+        body{
+            background: #ddd;
+            text-align: center;
+        }
+
+        #mapid{
+            margin: 0 auto;
+        }
+
+        .double{
+            width: 425px;
+        }
+
+        .double table{
+            width: 400px;
+            table-layout: fixed;
+        }
+
+        .triple{
+            width: 625px;
+        }
+
+        .triple table{
+            width: 600px;
+            table-layout: fixed;
+        }
+
+        .quadruple{
+            width: 825px;
+        }
+
+        .quadruple table{
+            width: 800px;
+            table-layout: fixed;
+        }
+
+        td{
+            font-weight: bold;
+
+        }
+
+        td b{
+            font-weight:normal;
+            color: rgba(62, 56, 74, 0.91)
+        }
+
+
+        #logo_get{
+            width: 100px;
+            float: left;
+            box-shadow: 0 1px 5px rgba(0,0,0,1);
+            border-radius: 4px;
+
+        }
+
+        #logo_container{
+            top: 13px;
+            left: 24px;
+            position: absolute;
+            box-shadow: 0 1px 5px rgba(0,0,0,1);
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="logo_container">
+        <img id="logo_get" src="img/logoget.jpg">
+    </div>
+    <div id="mapid" style="width: 1000px; height: 800px"></div>
+
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script>
+
+        String.prototype.capitalize = function() {
+            return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+        };
+
+        var mymap = L.map('mapid').setView([30, 0], 2);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            id: 'mapbox.streets'
+        }).addTo(mymap);
+
+        /* Palestina */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Fadi Amro<br><b>GIS and <br>Database officer</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/fadiamro.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([32.1198, 34.88159]).addTo(mymap)
+                .bindPopup(html);
+
+
+        /* Líbano */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Derya Mutlu <br><b>FSL Coordinator</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td>";
+        html += "<td>Elsa Al Maalouf <br><b>Nutrition Advisor</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/elsamaalouf.jpg'></td></tr>";
+        html += "<tr><td>Diego Rafales Millán<br><b>FLYING LOG SUPPORT</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/diegorafales.jpg'></td>";
+        html += "<td>Rola Al Abdallah <br><b>M&E <br>field officer</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/rolafawzialabdallah.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([34.32756, 35.7605]).addTo(mymap)
+                .bindPopup(html, {className : 'double'});
+
+
+        /* Siria */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Ahmad Baradai<br><b>Supply Logistician</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ahmadbaradai.jpg'></td></tr>";
+        html += "<tr><td>Samer Mardini<br><b>HR Manager</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/samermardini.jpg'></td></tr>";
+        html += "<tr><td>Mohammad Zaher Idrees<br><b>Capital Administrator</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/mohammadzaheridrees.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([35.12481, 38.91357]).addTo(mymap)
+                .bindPopup(html);
+
+
+        /* Niger */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Maria del Mar Pozuelo Castillo <br><b>FSL Coordinator</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/mariadelmarpozuelo.jpg'></td>";
+        html += "<td>Sani Almou Akilou <br><b>Chef de Projet WaSH</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.jpg'></td></tr>";
+        html += "<tr><td>Aboubacar Sahirou <br><b>Logisticien</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.jpg'></td>";
+        html += "<td>Boubacar Moussa Amadou <br><b>Chef de Base</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/boubacarmoussaamadou.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([16.72804, 10.54688]).addTo(mymap)
+                .bindPopup(html, {className : 'double'});
+
+
+
+        /* Georgia */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Victor Saiapin <br><b>Logistics Coordinator</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/victorsaiapin.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([41.95578, 45.19775]).addTo(mymap)
+                .bindPopup(html);
+
+        /* Guinea */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Anika Krstic<br><b>Country Director</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/anikakrstic.jpg'></td>";
+        html += "<td>Ablaye Moctar Gaye<br><b>Coordinateur Logistique</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ablayemoctargaye.jpg'></td>";
+        html += "<td>Ibrahima Kalil Cellou<br><b>Responsable RH</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ibrahimakalilcellou.jpg'></td></tr>";
+        html += "<tr><td>Nènè Fatou Camara<br><b>CdP WaSH</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/nenefatoucamara.jpg'></td>";
+        html += "<td>Mamadou Adama Balde<br><b>Chef de Base</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/mamadouadamabalde.JPG'></td><td></td></tr>";
+        html += "</table>";
+
+        L.marker([10.84508, -11.20605]).addTo(mymap)
+                .bindPopup(html, {className : 'triple'});
+
+
+        /* Senegal */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Aliou	Sall<br><b>Responsable Volet SA</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/aliousall.jpg'></td></tr>";
+        html += "<tr><td>Adama	Traore<br><b>Chef de Projet SA</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/adamatraore.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([14.90232, -14.32617]).addTo(mymap)
+                .bindPopup(html);
+
+        /* Filipinas */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Ferdinand	Gozar<br><b>M&E Manager</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ferdinandgozar.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([10.91962, 123.39844]).addTo(mymap)
+                .bindPopup(html);
+
+        /* Peru */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Víctor	Martínez Pavón<br><b>Grant Writer</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/victormartinez.jpg'></td></tr>";
+        html += "<tr><td>Iván Batzán<br><b>Director País</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ivanbatzan.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([-8.75479, -76.20117]).addTo(mymap)
+                .bindPopup(html);
+
+
+        /* Mauritania */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Dame Fall<br><b>CdP SA Flying</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/damefall.jpg'></td>";
+        html += "<td>Désiré	Bonkoungou<br><b>CdP SA</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/desireyoussoufbonkoungou.JPG'></td></tr>";
+        html += "<tr><td>Doulo Traore<br><b>Responsable National WaSH</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/doulotraore.jpg'></td>";
+        html += "<td>Moussa Thiam<br><b>TS Nutrition Communautaire</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td></tr>";
+        html += "</table>";
+
+        L.marker([ 19.80805, -10.63477]).addTo(mymap)
+                .bindPopup(html, {className : 'double'});
+
+        /* Mali */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Amadou	Ballo<br><b>Chef Comptable</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/amadouballo.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([18.31281, -1.23047]).addTo(mymap)
+                .bindPopup(html);
+
+
+        /* Colombia */
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Lady Johana Zuluaga Hoyos<br><b>Tecnica NUT</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/ladyjohanazuluaga.jpg'></td></tr>";
+        html += "</table>";
+
+        L.marker([4.93772, -73.98193]).addTo(mymap)
+                .bindPopup(html);
+
+
+
+        /* Spain */
+
+        var html =  "";
+        html += "<table>";
+        html += "<tr><td>Elena Alonso Cuñado<br><b>Responsable de Gestión Financiera</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/elenaalonso.JPG'></td>";
+        html += "<td>María Romero Pardo<br><b>Gestor de proyectos</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/mariaromero.jpg'></td>";
+        html += "<td>Raphaël Laguesse<br><b>Gestor de proyectos</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/raphaellaguesse.jpg'></td>";
+        html += "<td>Angela	Constantino<br><b>Contable Misiones</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td></tr>";
+        html += "<tr><td>Carlos	Riaza Gracia<br><b>Gestor de Comunicación Externa</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td>";
+        html += "<td>Julio Tarín García<br><b>Responsable IT</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td>";
+        html += "<td>Amel El Yamani Núñez<br><b>DASE + perfil HoP FSL</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/amelelyamani.jpg'></td>";
+        html += "<td>Fernando Fernández Sánchez<br><b>Gestor de proyectos IT</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td></tr>";
+        html += "<tr><td>Javier Bombín Bollaín<br><b>Responsable de formación interna</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/javierbombin.JPG'></td>";
+        html += "<td>Miguel	Martín Hernández<br><b>Técnico TIC Proyecto KACHE</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td>";
+        html += "<td>Carlos	Suarez Morales<br><b>Referente WaSH Sahel</b></td><td><img class='tooltip-image' style='width:80px;height:80px' src='img/undefined.png'></td><td></td></tr>";
+        html += "</table>";
+
+        L.marker([39.71334, -4.21875]).addTo(mymap)
+                .bindPopup(html, {className : 'quadruple'});
+
+        function onMapClick(e) {
+            console.log("You clicked the map at " + e.latlng);
+        }
+
+        mymap.on('click', onMapClick);
+
+
+    </script>
+
+</body>
+</html>

@@ -8,8 +8,10 @@ var monk = require('monk');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var apis = require('./routes/api');
+var cors = require('cors');
 
 var app = express();
+app.use(cors());
 //DB connection
 var db =  monk('localhost:27017/test');
 
@@ -18,6 +20,7 @@ app.use(function(req,res,next){
   req.db = db;
   next();
 });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
